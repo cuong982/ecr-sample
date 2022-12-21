@@ -7,13 +7,12 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-20.04
     permissions:
-      id-token: write
-      contents: read
-    steps:
+      id-token: write # This is required for requesting the JWS
+      contents: read  # This is required for actions/checkout
 
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -22,10 +21,7 @@ jobs:
       with:
          aws-region: ap-northeast-1
          role-to-assume: arn:aws:iam::462489325224:role/QuickMftAdministratorUserRole
-         role-duration-seconds: 1200
-#        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        aws-region: ap-northeast-1
+         role-session-name: GitHubActions
 
     - name: Login to Amazon ECR
       id: login-ecr

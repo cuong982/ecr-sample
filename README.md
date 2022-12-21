@@ -19,3 +19,7 @@ AWS_SECRET_ACCESS_KEY: <AWS_SECRET_ACCESS_KEY>
         IMAGE_TAG: ${{ github.sha }}
 ```
 - For every commit to master, a new docker image tagged with git sha of commit will be pushed to ECR.
+
+# Creating OpenID Connect (OIDC) identity providers
+- For provider URL: https://token.actions.githubusercontent.com
+- For the Audience: sts.amazonaws.com
